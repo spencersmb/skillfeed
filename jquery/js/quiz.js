@@ -43,13 +43,19 @@ function submitAnswers(){
     //GET USER INPUT
     //this listens for a user select in each question set
     //listen for change on form with name q1 and get its value
-    var q1 = document.forms['quizForm']['q1'].value;
-    var q2 = document.forms['quizForm']['q2'].value;
-    var q3 = document.forms['quizForm']['q3'].value;
-    var q4 = document.forms['quizForm']['q4'].value;
-    var q5 = document.forms['quizForm']['q5'].value;
+    //var q1 = document.forms['quizForm']['q1'].value;
+    //var q2 = document.forms['quizForm']['q2'].value;
+    //var q3 = document.forms['quizForm']['q3'].value;
+    //var q4 = document.forms['quizForm']['q4'].value;
+    //var q5 = document.forms['quizForm']['q5'].value;
 
-    var q1x = document.getElementsByName('q1');
+    var form = document.forms('quizForm');
+
+    console.log(form);
+
+    var q1 = document.getElementsByName('q1');
+    var q2 = document.getElementsByName('q2');
+    var q3 = document.getElementsByName('q3');
 
     //jquery version idea
     //function Checkform() {
@@ -82,11 +88,55 @@ function submitAnswers(){
     //var array = [{key:1},{key:2},{key:3}];
     //console.log(q1x.toString());
 
-    var ids = [].map.call(q1x, function(input) {
-        return input.value;
+    //var checkVal = function(array, value){
+    //
+    //    result = false;
+    //
+    //    _.find(array, function(val){
+    //        if(val === value){
+    //            console.log(true);
+    //
+    //            return result = true;
+    //        }
+    //
+    //        return console.log('Q1 not filled out yet');
+    //
+    //    });
+    //
+    //};
+
+    _.each()
+
+    var checkVal = function(array){
+
+        result = false;
+
+        _.each(array, function(val){
+            if (val == true){
+                console.log('true');
+                return result = true;
+            }
+
+            return  console.log('Q1 not filled out yet');
+        })
+    };
+
+    var ids = _.map(inputArray, function(input){
+        return input.checked;
     });
 
-    console.log(ids);
+    //checkVal(ids, true);
+    checkVal(ids);
+
+    //var each = _.each(ids, function(val){
+    //    return val;
+    //});
+
+    //var ids = [].map.call(q1x, function(input) {
+    //    return input.value;
+    //});
+
+
     //SET CORRECT ANSWERS
     var answers = [];
 
