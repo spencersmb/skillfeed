@@ -33,7 +33,7 @@ var allQuestions = [
 ];
 
 
-function submitAnswers(){
+function submitAnswers( myformName ){
     //allquestions.length
     var total = 5;
     var score = 0;
@@ -55,7 +55,36 @@ function submitAnswers(){
 
     //console.log(q1);
 
+
+    var formName = document.getElementsByName( myformName );
+
+    var form = document.forms[formName];
+
+    //TRY PUTTING ALL THE Q's IN AN OBJECT
+    //since we have all the names condensed into one array use that to add in names
+
+    var quizObject = {
+        q1: document.forms['quizForm']['q1'].value
+    };
+
+    //TO ADD A VALUE
+
+    quizObject.q2 = document.forms['quizForm']['q2'].value;
+
+    //ADD VALUE THROUGH LOOP
+
+    //quizObject[i] = document.forms[formName][i].value;
+
+    console.log(quizObject);
+
+    //console.log(formName);
+
+    //only runs when object is passed in through submit
+    //alert(formName[0].name);
+
     var form = document.forms["quizForm"];
+
+    //console.log(form);
 
     var filteredInputs = [];
 
@@ -74,8 +103,6 @@ function submitAnswers(){
   getInputs(form);
 
     //console.log(form);
-
-    var a = "a";
 
     //console.log(q1.value);
 
@@ -158,7 +185,7 @@ function submitAnswers(){
     //REMOVE DUPLICATE NAMES
     var inputContainers =_.uniq(qNames, false);
 
-    //console.log(inputContainers);
+    console.log(inputContainers);
 
     var masterArray = [];
 
@@ -188,17 +215,59 @@ function submitAnswers(){
 
     inputSeperation( inputContainers, filteredInputs);
 
-    console.log(masterArray[0]);
+    console.log( masterArray[0][0].checked);
+
+
+    console.log(inputContainers.length);
+
+
+    for (var i = 0; i < inputContainers.length; i++){
+
+        for(var j = 0; j <masterArray[i].length; j++){
+
+            if( inputContainers[i] == masterArray[i][j].name){
 
 
 
-    if( eval(masterArray[0].value) == '' || eval(masterArray[0].value) == null ){
-        alert('true');
-        return false;
-    } else{
-        alert('false');
-        return false;
+            }
+        }
     }
+
+
+    //_.each(masterArray, function(array, i){
+    //
+    //    _.each(array, function(input,i){
+    //
+    //        console.log(input);
+    //
+    //    })
+    //
+    //});
+    //console.log('document value ' + q1);
+    //
+    //var q8 = masterArray[0].checked;
+    //
+    //console.log('master value ' + q8);
+
+    //for(i = 1; i <= total; i++){
+    //    //use eval so it turn into a letter and you can concatinate it
+    //    if(eval('q'+ i) == null || eval('q'+ i) == '' ){
+    //        alert( 'You missed question ' + i );
+    //        return false;
+    //    } else {
+    //        alert('question '+ i + ' is filled');
+    //    }
+    //}
+
+
+
+    //if( eval(masterArray[0].value) == '' || eval(masterArray[0].value) == null ){
+    //    alert('true');
+    //    return false;
+    //} else{
+    //    alert('false');
+    //    return false;
+    //}
 
     //_.every(masterArray, function(item,i){
     //
@@ -246,7 +315,7 @@ function submitAnswers(){
 
 }
 
-//submitAnswers();
+submitAnswers();
 
 function createVariables(){
     var accounts = [];
