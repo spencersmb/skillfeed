@@ -56,33 +56,22 @@ function submitAnswers( myformName ){
     //console.log(q1);
 
 
-    var formName = document.getElementsByName( myformName );
+    //var getForm = document.getElementsByName( myformName );
 
-    var form = document.forms[formName];
+    var getForm = document.getElementsByName('quizForm');
 
-    //TRY PUTTING ALL THE Q's IN AN OBJECT
-    //since we have all the names condensed into one array use that to add in names
 
-    var quizObject = {
-        q1: document.forms['quizForm']['q1'].value
-    };
 
-    //TO ADD A VALUE
+    var formName = document.forms[getForm[0].name];
 
-    quizObject.q2 = document.forms['quizForm']['q2'].value;
 
-    //ADD VALUE THROUGH LOOP
-
-    //quizObject[i] = document.forms[formName][i].value;
-
-    console.log(quizObject);
 
     //console.log(formName);
 
     //only runs when object is passed in through submit
     //alert(formName[0].name);
 
-    var form = document.forms["quizForm"];
+    var form = formName;
 
     //console.log(form);
 
@@ -180,74 +169,76 @@ function submitAnswers( myformName ){
 
     getNames(form);
 
+
+    //TRY PUTTING ALL THE Q's IN AN OBJECT
+    //ref
+    //var formName = document.forms[getForm[0].name];
+
+    //var q1form = formName['q1'];
+    //console.log(q1form);
+
     //console.log(qNames);
+
+
+
+
+
 
     //REMOVE DUPLICATE NAMES
     var inputContainers =_.uniq(qNames, false);
 
     console.log(inputContainers);
 
-    var masterArray = [];
 
-    //build empty array length of the inputs in html
-    _.each(inputContainers, function(names,i){
+    var quizObject = {};
 
-        masterArray.push([]);
+    //CREATE OBJECT WITH KEY/VALUE OF EACH BLOCK OF INPUTS
+    var questions = function( namesArr, formElem ){
 
-    });
+        //FOR EACH NAME PUT THAT INTO THE OBJECT
+        _.each(namesArr, function(name, i){
 
-    //POPULATE MASTER ARRAY
-    var inputSeperation = function( namesArray, formArray){
+            quizObject[name] = formElem[name].value
 
-            //FILTER THE FORM BY EACH NAME
-            _.filter(formArray, function(input){
-
-
-                _.each(namesArray, function(name, i){
-                    if( input.name == namesArray[i]){
-                        masterArray[i].push(input);
-                    }
-                });
-
-        });
-
+        })
     };
 
-    inputSeperation( inputContainers, filteredInputs);
+    questions(inputContainers, formName);
 
-    console.log( masterArray[0][0].checked);
-
-
-    console.log(inputContainers.length);
+    console.log(quizObject);
 
 
-    for (var i = 0; i < inputContainers.length; i++){
+    //DOUBLE LOOP EXAMPLE
 
-        for(var j = 0; j <masterArray[i].length; j++){
-
-            if( inputContainers[i] == masterArray[i][j].name){
-
-
-
-            }
-        }
-    }
-
-
-    //_.each(masterArray, function(array, i){
+    //var masterArray = [];
     //
-    //    _.each(array, function(input,i){
+    ////build empty array length of the inputs in html
+    //_.each(inputContainers, function(names,i){
     //
-    //        console.log(input);
-    //
-    //    })
+    //    masterArray.push([]);
     //
     //});
-    //console.log('document value ' + q1);
     //
-    //var q8 = masterArray[0].checked;
+    ////POPULATE MASTER ARRAY
+    //var inputSeperation = function( namesArray, formArray){
     //
-    //console.log('master value ' + q8);
+    //        //FILTER THE FORM BY EACH NAME
+    //        _.filter(formArray, function(input){
+    //
+    //
+    //            _.each(namesArray, function(name, i){
+    //                if( input.name == namesArray[i]){
+    //                    masterArray[i].push(input);
+    //                }
+    //            });
+    //
+    //    });
+    //
+    //};
+    //
+    //inputSeperation( inputContainers, filteredInputs);
+    //
+    //console.log( masterArray[0][0].checked);
 
     //for(i = 1; i <= total; i++){
     //    //use eval so it turn into a letter and you can concatinate it
