@@ -58,9 +58,8 @@ function submitAnswers( myformName ){
 
     var filteredInputs = [];
 
-    var quizObject = {};
 
-    var answers = ['a','a','d','b','d','d'];
+    var answers = ['a','a','d','b','d'];
 
 
     //GET ALL INPUTS FROM FORM
@@ -117,11 +116,11 @@ function submitAnswers( myformName ){
     //Counting from 0 - 4 = a total of 5.
     var loopCount = inputContainers.length - 1;
 
-
+    var quizObject = {};
 
     console.log(loopCount);
 
-    for( var i = 0; i <= loopCount; i++){
+    for(i = 0; i <= loopCount.length; i++){
 
         //separate counter to log correct count to user.
         var count = i + 1;
@@ -184,7 +183,7 @@ function submitAnswers( myformName ){
     };
 
 
-    alert("You got " + checkAnswers(answers,quizObject, inputContainers) + " out of " + inputContainers.length + " correct." );
+    //alert(checkAnswers(answers,quizObject, inputContainers));
 
 }
 
