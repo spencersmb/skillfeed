@@ -1,0 +1,58 @@
+.main{
+    height: 100vh;
+    position:relative;
+}
+
+.main .row{
+    position: absolute;
+    top:25%;
+    left:10%
+}
+
+.slider__wrapper{
+    position:relative;
+}
+
+.inner__slider{
+    position: relative;
+    width:100%;
+}
+
+.slider__image{
+    position:relative;
+    margin:0 auto;
+}
+
+.slider__image > img{
+    margin:0 auto;
+    display: inherit;
+}
+
+.slider__controls{
+    position: absolute;
+    top:0;
+}
+
+.control__right {
+
+    right:0;
+    top:0;
+}
+.control__left {
+
+    left:0;
+    top:0;
+}
+
+.control__right > img {
+    position:absolute;
+    margin-top: -25px;
+    top:50%;
+    right: 5px;
+}
+.control__left > img{
+    position:absolute;
+    margin-top: -25px;
+    top:50%;
+    left:5px;
+}
